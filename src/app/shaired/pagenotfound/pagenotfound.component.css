@@ -1,0 +1,66 @@
+/* 404.component.css */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    /* Light background color */
+    color: #333;
+    /* Dark text color */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Full height */
+}
+
+.content {
+    text-align: center;
+    background: #fff;
+    /* White background for the content box */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 100px;
+    /* Large font for the main error code */
+    margin: 0;
+    color: #e74c3c;
+    /* Red color for the error code */
+}
+
+h2 {
+    font-size: 24px;
+    /* Medium font for the error message */
+    margin: 10px 0;
+}
+
+p {
+    font-size: 16px;
+    /* Regular font for the description */
+    margin-bottom: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    /* Remove underline from link */
+    color: #fff;
+    /* White text color */
+    background-color: #3498db;
+    /* Blue background color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    /* Smooth transition for hover effect */
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    /* Darker blue on hover */
+}

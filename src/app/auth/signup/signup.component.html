@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="one">
+        <div class="two">
+            <h2>Signup</h2><br>
+        </div>
+
+        <form [formGroup]="signup" (ngSubmit)="submit()">
+            <div class="three">
+                <mat-form-field>
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email"
+                        (blur)="updateErrorMessage()" />
+                    <mat-error *ngIf="email?.invalid" style="color: red;">{{ errorMessage() }}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="four">
+                <mat-form-field>
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+                    <button mat-icon-button matSuffix type="button" (click)="clickEvent($event)"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <div class="four">
+                <mat-form-field>
+                    <mat-label>Clinic Location</mat-label>
+                    <mat-select disableRipple formControlName="clinic_id">
+                        <mat-option value="1">Rishikesh</mat-option>
+                        <mat-option value="2">Dehradun</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="four">
+                <mat-form-field>
+                    <mat-label>User Role</mat-label>
+                    <mat-select formControlName="user_role" multiple>
+                        <mat-select-trigger>
+                            {{ userrole.value?.[0] || '' }}
+                            <ng-container *ngIf="(userrole.value?.length || 0) > 1">
+                                <span class="example-additional-selection">
+                                    (+{{ (userrole.value?.length || 0) - 1 }}
+                                    {{ userrole.value?.length === 2 ? 'other' : 'others' }})
+                                </span>
+                            </ng-container>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let topping of toppingList" [value]="topping">
+                            {{ topping }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+            <div class="five">
+                <div class="example-button-row">
+                    <div class="example-flex-container">
+                        <div class="example-button-container">
+                            <button mat-fab extended type="submit">
+                                <mat-icon>save</mat-icon>
+                                Submit
+                            </button>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="example-button-container">
+                            <button mat-fab extended type="reset">
+                                <mat-icon>clear</mat-icon>
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
