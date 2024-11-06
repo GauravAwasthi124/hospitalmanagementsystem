@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileService } from './service/profile/profile.service';
 import { SignupComponent } from './signup/signup.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 const routes: Routes = [
   {
     path: 'login',
@@ -37,6 +38,7 @@ const routes: Routes = [
     MatIconModule,
     HttpClientModule,
     MatSelectModule,
+    MatDialogModule,
     RouterModule.forChild(routes),
   ],
   providers: [

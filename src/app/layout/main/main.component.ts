@@ -8,17 +8,12 @@ import { SidebarService } from '../service/sidenav/sidenav.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-  token = localStorage.getItem('refresh_token');
   isSidebarVisible = true;
   isLoginPage = true;
   isSignup = true;
-  notfound = true;
+  notfound = false;
   constructor(private sidebarService: SidebarService, private router: Router) { }
-
   ngOnInit() {
-    if (!this.token) {
-      this.router.navigateByUrl('/auth/login');
-    }
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
       console.log(isVisible)
       this.isSidebarVisible = isVisible;
@@ -27,7 +22,7 @@ export class MainComponent {
       if (event instanceof NavigationEnd) {
         this.isLoginPage = this.router.url.includes('/auth/login');
         this.isSignup = this.router.url.includes('/auth/signup');
-        this.notfound = this.router.url === '/pagenotfound';
+        this.notfound = this.router.url==='/pagenotfound';
       }
     });
   }

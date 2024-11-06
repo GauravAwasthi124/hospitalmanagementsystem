@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfileService {
   private apiUrl = 'http://localhost:3000/v1/profile';
+  // token = localStorage.getItem('refresh-token');
 
   constructor(private http: HttpClient) { }
   profileUser(token: any): Observable<any> {
