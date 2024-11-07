@@ -5,17 +5,35 @@ import { Injectable } from '@angular/core';
 })
 export class TokenserviceService {
 
-  private tokenKey = 'refresh_token';
-  constructor() {}
-  saveToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
+  private reftoken = 'refresh_token';
+  private acctoken = 'access_token';
+  constructor() { }
+
+  //refresh token
+  saverefToken(token: string): void {
+    localStorage.setItem(this.reftoken, token);
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+  getrefToken(): string | null {
+    return localStorage.getItem(this.reftoken);
   }
 
-  clearToken(): void {
-    localStorage.removeItem(this.tokenKey);
+  clearrefToken(): void {
+    localStorage.removeItem(this.reftoken);
   }
+
+
+  // access token 
+  saveaccToken(token: string): void{
+    localStorage.setItem(this.acctoken, token);
+  }
+
+  getaccToken(): string | null{
+    return localStorage.getItem(this.acctoken);
+  }
+
+  clearaccToken(): void{
+    localStorage.removeItem(this.acctoken);
+  }
+  
 }

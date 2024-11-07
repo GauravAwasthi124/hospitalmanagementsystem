@@ -11,19 +11,18 @@ export class ShairedService {
     valid!: boolean;
     constructor(private http: HttpClient, private profile: ProfileService) { }
     tokenAuthentication() {
-        this.profile.profileUser().subscribe({
-            next: (res: any) => {
-                if (!res) {
-                    this.valid = false;
-                }
-            }
-        });
-        if(this.valid =false) {
-            this.profile.profileUser().subscribe({
-                next: (res: any) => {
-                }
-            });
-        }
-        // console.log(this.reftoken);
+        // this.profile.profileUser().subscribe({
+        //     next: (res: any) => {
+        //         if (!res) {
+        //             this.valid = false;
+        //         }
+        //     }
+        // });
+        // if(this.valid =false) {
+        //     this.profile.profileUser().subscribe({
+        //         next: (res: any) => {
+        //         }
+        //     });
+        // }
     }
 }

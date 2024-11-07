@@ -54,7 +54,9 @@ export class LoginComponent implements OnInit {
       this.login.login(email, password).subscribe({
         next: (res: any) => {
           const refreshToken = res.tokens.refresh.token;
-          this.token.saveToken(refreshToken);
+          const accessToken = res.tokens.access.token;
+          this.token.saverefToken(refreshToken);
+          this.token.saveaccToken(accessToken);
           this.openDialog();
         },
         error: (err: any) => {

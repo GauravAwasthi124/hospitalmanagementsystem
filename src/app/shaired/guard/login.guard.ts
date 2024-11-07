@@ -5,7 +5,7 @@ import { TokenserviceService } from '../service/tokenservice/tokenservice.servic
 export const loginGuard: CanActivateFn = (route, state) => {
   let router = inject(Router)
   let tokenService = inject(TokenserviceService);
-  let storage = tokenService.getToken();
+  let storage = tokenService.getaccToken();
   if (storage && storage !== 'false') {
     router.navigateByUrl('layout/main');
     return false;

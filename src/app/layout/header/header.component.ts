@@ -13,19 +13,16 @@ import { TokenserviceService } from 'src/app/shaired/service/tokenservice/tokens
 
 export class HeaderComponent implements OnInit {
   profile!: any;
-  token: string | null = '';
   constructor(
     private sidebar: SidebarService,
     private router: Router,
     private pro: ProfileService,
     private lgout: LogoutService,
-    private tokenservice: TokenserviceService
   ) { }
 
 
   ngOnInit(): void {
-    this.token = this.tokenservice.getToken();
-    // this.profiledata();
+    this.profiledata()
   }
 
 
@@ -34,21 +31,20 @@ export class HeaderComponent implements OnInit {
   }
 
   async logout() {
-    this.lgout.logout(this.token).subscribe({
+    this.lgout.logout().subscribe({
       next: (res: any) => {
-        this.tokenservice.clearToken();
         this.router.navigateByUrl('/auth/login');
       }
     })
   }
 
-  // async profiledata() {
-  //   this.pro.profileUser(this.token).subscribe({
-  //     next: (res: any) => {
-  //       this.profile = res;
-  //     }
-  //   })
-  // } 
+  async profiledata() {
+    this.pro.profileUser().subscribe({
+      next: (res: any) => {
+        this.profile = res;
+      }
+    })
+  } 
 
   async Profile() {
     this.router.navigateByUrl('/pages/profile');

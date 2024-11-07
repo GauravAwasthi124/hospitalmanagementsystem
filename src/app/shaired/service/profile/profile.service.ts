@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 export class ProfileService {
   private apiUrl = 'http://localhost:3000/v1/profile';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   profileUser(): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, {});
   }
-}
+}   

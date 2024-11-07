@@ -10,7 +10,7 @@
     <span class="example-spacer"></span>
     <button mat-button class="neumorphic-button" (click)="Profile()">
         <mat-icon>account_circle</mat-icon>
-        <!-- {{profile?.user?.email | uppercase}} -->
+        {{profile?.email | uppercase}}
     </button>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <button mat-button class="neumorphic-button" (click)="logout()">LOGOUT</button>
