@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShairedService } from './shaired.service';
+import { ShairedService } from './ShairedService';
 
 describe('ShairedService', () => {
   let service: ShairedService;

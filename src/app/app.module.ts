@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './layout/layout.module';
-import { ShairedModule } from './shaired/shaired.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shaired/interceptor/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -16,10 +17,11 @@ import { ShairedModule } from './shaired/shaired.module';
     AppRoutingModule,
     AuthModule,
     LayoutModule,
-    ShairedModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

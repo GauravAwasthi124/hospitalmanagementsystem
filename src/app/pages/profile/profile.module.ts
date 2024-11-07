@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { Routes, RouterModule } from '@angular/router';
+import { StatusPipe } from 'src/app/shaired/pipe/status/status.pipe';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    StatusPipe
   ],
   imports: [
     CommonModule,

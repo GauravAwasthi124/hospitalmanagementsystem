@@ -8,9 +8,8 @@ import { Observable } from 'rxjs';
 export class LogoutService {
   apiUrl = 'http://localhost:3000/v1/auth/logout'
   constructor(private http: HttpClient) { }
-
-
-  logout(token:any): Observable<any>{
-    return this.http.post<any>(`${this.apiUrl}`, {token});
+  
+  logout(): Observable<any>{
+    return this.http.post<any>(`${this.apiUrl}`, {});
   }
 }

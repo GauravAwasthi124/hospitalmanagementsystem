@@ -6,8 +6,7 @@ import { Injectable } from '@angular/core';
 export class TokenserviceService {
 
   private tokenKey = 'refresh_token';
-
-  constructor() { }
+  constructor() {}
   saveToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }

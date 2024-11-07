@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit {
         next: (res: any) => {
           const refreshToken = res.tokens.refresh.token;
           this.token.saveToken(refreshToken);
-          // this.openDialog();
-          this.router.navigateByUrl('/layout/main');
+          this.openDialog();
         },
         error: (err: any) => {
           this.message = "Invalid email or password";

@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ProfileService } from './service/profile/profile.service';
+import { ProfileService } from '../shaired/service/profile/profile.service';
 import { SignupComponent } from './signup/signup.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -17,10 +17,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  
+
   {
     path: 'signup',
-    component:SignupComponent
+    component: SignupComponent
   }
 ];
 @NgModule({

@@ -3,13 +3,13 @@
         <h2>User Information</h2>
     </div>
     <div class="user-info">
-        <p><strong>Email:</strong> {{ profileData?.user?.email }}</p>
+        <p><strong>Email:</strong> {{ profileData?.email }}</p>
         <p><strong>Clinic Name:</strong> {{ profileData?.user?.clinic?.clinic_name }}</p>
-        <p><strong>User Role:</strong> {{profileData?.user?.user_role}}
+        <p><strong>User Role:</strong> {{profileData?.user_role}}
         </p>
         <p><strong>Status:</strong>
-            <span [ngClass]="profileData?.user?.status === 1 ? 'status-active' : 'status-inactive'">
-                {{ profileData?.user?.status === 1 ? 'Active' : 'Inactive' }}
+            <span [ngClass]="profileData?.status === 1 ? 'status-active' : 'status-inactive'">
+                {{ profileData?.status | status }}
             </span>
         </p>
     </div>
