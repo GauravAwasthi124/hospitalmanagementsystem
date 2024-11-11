@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthInterceptor } from './auth.interceptor';
+import { AuthInterceptor } from '../../service/tokenservice/tokenservice.service';
 
 describe('AuthInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       AuthInterceptor
-      ]
+    ]
   }));
 
   it('should be created', () => {

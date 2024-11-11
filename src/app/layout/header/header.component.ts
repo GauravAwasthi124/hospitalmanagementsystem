@@ -3,6 +3,7 @@ import { SidebarService } from '../service/sidenav/sidenav.service';
 import { Router } from '@angular/router';
 import { ProfileService } from 'src/app/shaired/service/profile/profile.service';
 import { LogoutService } from '../service/logout/logout.service';
+import { ReftokenService } from 'src/app/auth/service/reftoken/reftoken.service';
 import { TokenserviceService } from 'src/app/shaired/service/tokenservice/tokenservice.service';
 
 @Component({
@@ -18,15 +19,27 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private pro: ProfileService,
     private lgout: LogoutService,
-  ) { }
+    private ref: ReftokenService,
+    private token:TokenserviceService
+  ) {}
 
 
   ngOnInit(): void {
-    this.profiledata()
+    this.profiledata();
   }
 
+  checktoken() {
+    this.ref.refreshtoken().subscribe({
+      next: (res: any) => {
+        const access = res.access.token;
+        const refresh = res.refresh.token;
+        this.token.saveaccToken(access);
+        this.token.saverefToken(refresh);
+      }
+    })
+  }
 
-  toggleSidebar() {
+  toggleSidebar(){
     this.sidebar.toggleSidebar();
   }
 

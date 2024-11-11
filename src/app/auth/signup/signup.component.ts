@@ -50,7 +50,6 @@ export class SignupComponent {
       const { email, password, clinic_id, user_role} = this.signup.value;
       this.ser.register(email, password, clinic_id, user_role).subscribe({
         next: (res: any) => {
-          console.log(res);
           const refreshToken = res.tokens.refresh.token;
           localStorage.setItem('refresh_token', refreshToken);
           this.router.navigateByUrl('main');

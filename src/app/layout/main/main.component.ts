@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { SidebarService } from '../service/sidenav/sidenav.service';
-import { ShairedService } from 'src/app/shaired/service/shaired/ShairedService';
+import { ReftokenService } from 'src/app/auth/service/reftoken/reftoken.service';
 
 @Component({
   selector: 'app-main',
@@ -13,10 +13,8 @@ export class MainComponent {
   isLoginPage = true;
   isSignup = true;
   notfound = false;
-  data!: any;
-  constructor(private sidebarService: SidebarService, private router: Router, private shaired:ShairedService) { }
+  constructor(private sidebarService: SidebarService, private router: Router) { }
   ngOnInit() {
-    this.data = this.shaired.tokenAuthentication();
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
       console.log(isVisible)
       this.isSidebarVisible = isVisible;
@@ -28,5 +26,6 @@ export class MainComponent {
         this.notfound = this.router.url==='/pagenotfound';
       }
     });
-  }
+  } 
+  
 }
