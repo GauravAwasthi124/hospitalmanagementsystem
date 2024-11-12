@@ -7,6 +7,8 @@ export class TokenserviceService {
 
   private reftoken = 'refresh_token';
   private acctoken = 'access_token';
+  private userid = 'userid';
+  private userrole= 'userrole'
   constructor() { }
 
   //refresh token
@@ -34,6 +36,40 @@ export class TokenserviceService {
 
   clearaccToken(): void{
     localStorage.removeItem(this.acctoken);
+  }
+
+  //user id
+  saveuserid(token: string): void{
+    localStorage.setItem(this.userid,token);
+  }
+
+  getuserid(): string | null{
+    return localStorage.getItem(this.userid);
+  }
+  clearuserid(): void{
+    localStorage.removeItem(this.userid);
+  }
+  
+  // user role
+  saveuser_role(token: string): void {
+    localStorage.setItem(this.userrole, token);
+  }
+
+  getuser_role(): string[] | null {
+    const role = localStorage.getItem(this.userrole);
+    if (role) {
+      try {
+        const parsedRole = JSON.parse(role);
+        return Array.isArray(parsedRole) ? parsedRole : [parsedRole];
+      } catch (e) {
+        console.error("Failed to parse role:", e);
+        return null;
+      }
+    }
+    return null;
+  }
+  clearuser_role(): void {
+    localStorage.removeItem(this.userrole);
   }
   
 }

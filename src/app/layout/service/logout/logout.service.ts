@@ -17,6 +17,8 @@ export class LogoutService {
       tap(() => {
         this.tok.clearaccToken();
         this.tok.clearrefToken();
+        this.tok.clearuser_role();
+        this.tok.clearuserid();
       })
     );
   }

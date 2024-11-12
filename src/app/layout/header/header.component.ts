@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.profiledata();
+    
   }
 
   checktoken() {
@@ -51,13 +51,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  async profiledata() {
-    this.pro.profileUser().subscribe({
-      next: (res: any) => {
-        this.profile = res;
-      }
-    })
-  } 
+  
 
   async Profile() {
     this.router.navigateByUrl('/pages/profile');

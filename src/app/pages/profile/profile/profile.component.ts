@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from 'src/app/shaired/service/profile/profile.service';
+import { TokenserviceService } from 'src/app/shaired/service/tokenservice/tokenservice.service';
+import { Store } from '@ngrx/store';
+import { loadUser } from 'src/app/shaired/state/actions/users.actions';
+import { selectUserState } from 'src/app/shaired/state/selectors/users.selector';
 
 @Component({
   selector: 'app-profile',
@@ -7,21 +10,22 @@ import { ProfileService } from 'src/app/shaired/service/profile/profile.service'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  isLast(role: string, roles: string[]): boolean {
-    return roles.indexOf(role) === roles.length - 1;
-  }
-  profileData!: any;
-  constructor(private data: ProfileService) { }
-  ngOnInit(): void {
-    this.profile();
-  }
-  async profile() {
-    this.data.profileUser().subscribe({
-      next: (res: any) => {
-        console.log(res);
-        this.profileData = res;
+  profileData: any;
 
-      }
-    })
+  constructor(
+    private store: Store,
+    private token: TokenserviceService
+  ) { }
+
+  ngOnInit(): void {
+    const userId = this.token.getuserid();
+    console.log(userId);
+    if (userId) {
+      this.store.dispatch(loadUser({ id: + userId }));
+      this.store.select(selectUserState).subscribe((state) => {
+        this.profileData = state.userbyid;
+        console.log(this.profileData)
+      });
+    }
   }
 }

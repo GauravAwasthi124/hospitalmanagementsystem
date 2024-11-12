@@ -17,7 +17,7 @@ export class UsersService {
   }
   createUser(email: string, password: string, clinic_id: number, user_role: string): Observable<any> {
     const createbody = { email, password, clinic_id, user_role };
-    return this.http.post<any>(`${this.apiUrl}`, { createbody });
+    return this.http.post<any>(`${this.apiUrl}`, createbody );
   }
   deleteUser(id:number):Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
@@ -25,7 +25,7 @@ export class UsersService {
   
   updateUser(id:number,email:string,clinic_id:number,user_role:string,):Observable<any> {
     const updatebody = { email, clinic_id, user_role };
-    return this.http.patch<any>(`${this.apiUrl}/${id}`,{updatebody});
+    return this.http.patch<any>(`${this.apiUrl}/${id}`,updatebody);
   }
 
   

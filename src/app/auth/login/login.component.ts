@@ -7,6 +7,7 @@ import { LoginService } from '../service/login/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserroleComponent } from 'src/app/shaired/userrole/userrole/userrole.component';
 import { TokenserviceService } from 'src/app/shaired/service/tokenservice/tokenservice.service';
+import { ProfileService } from 'src/app/shaired/service/profile/profile.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,13 @@ export class LoginComponent implements OnInit {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   errormessage!: string;
   toastr: any;
-  constructor(private fb: FormBuilder, private login: LoginService, private router: Router, private token:TokenserviceService) {
+  constructor(
+    private fb: FormBuilder,
+    private login: LoginService,
+    private router: Router,
+    private token: TokenserviceService,
+    private profile:ProfileService
+  ) {
     this.form = this.fb.group({
       email: this.email,
       password: ['', [Validators.required]]
@@ -57,12 +64,20 @@ export class LoginComponent implements OnInit {
           const accessToken = res.tokens.access.token;
           this.token.saverefToken(refreshToken);
           this.token.saveaccToken(accessToken);
-          this.openDialog();
+          this.profile.profileUser().subscribe({
+            next: (res: any) => {
+              const id = res.id
+              console.log(id);
+              this.token.saveuserid(id);
+              this.openDialog();
+            }
+          })
         },
         error: (err: any) => {
           this.message = "Invalid email or password";
         }
       });
+      
     }
   }
 
