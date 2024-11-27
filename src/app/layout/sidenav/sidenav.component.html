@@ -18,23 +18,41 @@
             </ul>
         </li> -->
 
-        <li>
-            <a routerLink="/pages/profile" routerLinkActive="active">
-                <span class="menu-icon material-icons">face</span>
+        <li *ngIf="userrole === 'admin' || userrole === 'user' ">
+            <a routerLink="/pages/clinic" routerLinkActive="active">
+                <span class="menu-icon material-icons">local_hospital</span>
                 <span class="menu-text">Clinic Details</span>
             </a>
         </li>
-        <li>
+        <li *ngIf="userrole === 'admin' || userrole === 'user' ">
+            <a routerLink="/pages/practtioner" routerLinkActive="active">
+                <span class="menu-icon material-icons">person_outline</span>
+                <span class="menu-text">Practtioner Detail</span>
+            </a>
+        </li>
+        <li *ngIf="userrole === 'admin' || userrole === 'user' ">
+            <a routerLink="/pages/location" routerLinkActive="active">
+                <span class="menu-icon material-icons">location_on</span>
+                <span class="menu-text">Location</span>
+            </a>
+        </li>
+        <li *ngIf="userrole === 'admin' || userrole === 'user' ">
+            <a routerLink="/pages/patients" routerLinkActive="active">
+                <span class="menu-icon material-icons">health_and_safety</span>
+                <span class="menu-text">Patients</span>
+            </a>
+        </li>
+        <!-- <li *ngIf="userrole === 'doctor'">
             <a routerLink="/pages/profile" routerLinkActive="active">
                 <span class="menu-icon material-icons">category</span>
                 <span class="menu-text">Doctors</span>
             </a>
         </li>
-        <li>
+        <li *ngIf="userrole === 'patient'">
             <a routerLink="/pages/profile" routerLinkActive="active">
                 <span class="menu-icon material-icons">category</span>
                 <span class="menu-text">Patient</span>
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>

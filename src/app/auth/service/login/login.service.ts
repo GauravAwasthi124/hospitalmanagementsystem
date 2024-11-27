@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class LoginService {
   
   apiUrl = 'http://localhost:3000/v1/auth/login';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   
   login(email:any,password:any):Observable<any> {
     const body = { email, password };

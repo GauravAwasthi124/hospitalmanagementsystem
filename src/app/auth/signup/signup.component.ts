@@ -17,7 +17,7 @@ export class SignupComponent {
   errorMessage = signal('');
   userrole = new FormControl('',[Validators.required]);
 
-  toppingList: string[] = ['Clinic Admin', 'Patient', 'Doctor',];
+  toppingList: string[] = ['admin', 'patient', 'doctor',];
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   constructor(private fb: FormBuilder,private router: Router, private ser:SignupService) {
     this.signup = this.fb.group({

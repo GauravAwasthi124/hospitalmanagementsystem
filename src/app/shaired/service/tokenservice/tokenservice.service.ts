@@ -51,22 +51,12 @@ export class TokenserviceService {
   }
   
   // user role
-  saveuser_role(token: string): void {
-    localStorage.setItem(this.userrole, token);
+  saveuser_role(token: string):void {
+    localStorage.setItem(this.userrole,token);
   }
 
-  getuser_role(): string[] | null {
-    const role = localStorage.getItem(this.userrole);
-    if (role) {
-      try {
-        const parsedRole = JSON.parse(role);
-        return Array.isArray(parsedRole) ? parsedRole : [parsedRole];
-      } catch (e) {
-        console.error("Failed to parse role:", e);
-        return null;
-      }
-    }
-    return null;
+  getuser_role(): string | null {
+    return localStorage.getItem(this.userrole);
   }
   clearuser_role(): void {
     localStorage.removeItem(this.userrole);

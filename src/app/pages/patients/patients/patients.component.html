@@ -1,1 +1,55 @@
-<p>patients works!</p>
+<mat-table [dataSource]="patientData" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef>Sr No. </mat-header-cell>
+        <mat-cell *matCellDef="let element ;let i=index"> {{i+1}} </mat-cell>
+    </ng-container>
+
+    <!--Full Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Full Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.first_name+' '+element.middle_name+' '+element.last_name |uppercase}} </mat-cell>
+    </ng-container>
+
+    <!-- Dob Column -->
+    <ng-container matColumnDef="weight">
+        <mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.date_of_birth |date}} </mat-cell>
+    </ng-container>
+
+    <!-- phone Column -->
+    <ng-container matColumnDef="symbol">
+        <mat-header-cell *matHeaderCellDef> Contact Number </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.phone_number }} </mat-cell>
+    </ng-container>
+
+    <!-- clinic name Column -->
+    <ng-container matColumnDef="clinic_name">
+        <mat-header-cell *matHeaderCellDef> Clinic name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.clinic.clinic_name }} </mat-cell>
+    </ng-container>
+
+    <!-- practitioner Column -->
+    <ng-container matColumnDef="practtioner_name">
+        <mat-header-cell *matHeaderCellDef>Practitioner Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.practitioner.practitiner_first_name+' '+ element.practitioner.practitiner_middle_name+' '+element.practitioner.practitiner_last_name | uppercase}} </mat-cell>
+    </ng-container>
+
+    <!-- edit Column -->
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef>Edit </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+            <button><mat-icon class="edit">edit</mat-icon></button>
+        </mat-cell>
+    </ng-container>
+
+    <!-- delete Column -->
+    <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef>Delete </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <button><mat-icon class="delete">delete</mat-icon></button>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
   message!: any;
 
-  async submit(event: Event) {
+  submit(event: Event) {
     if (this.form.valid) {
       const { email, password } = this.form.value;
       this.login.login(email, password).subscribe({
@@ -67,17 +67,23 @@ export class LoginComponent implements OnInit {
           this.profile.profileUser().subscribe({
             next: (res: any) => {
               const id = res.id
-              console.log(id);
+              const userrole = res.user_role;
               this.token.saveuserid(id);
-              this.openDialog();
+              if (typeof userrole === 'string' && userrole.split(',').length > 1) {
+                this.token.saveuser_role(userrole);
+                this.openDialog();
+              } else {
+                this.token.saveuser_role(JSON.parse(userrole));
+                this.router.navigateByUrl('/layout/main');
+              }
+
             }
-          })
+          });
         },
         error: (err: any) => {
           this.message = "Invalid email or password";
         }
-      });
-      
+      }); 
     }
   }
 

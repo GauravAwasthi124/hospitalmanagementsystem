@@ -5,10 +5,10 @@
     <div class="user-info">
         <p><strong>Email:</strong> {{ profileData?.email }}</p>
         <p><strong>Clinic Name:</strong> {{ profileData?.clinic?.clinic_name }}</p>
-        <p><strong>User Role:</strong> {{profileData?.user_role}}
+        <p><strong>User Role:</strong> {{userRole}}
         </p>
         <p><strong>Status:</strong>
-            <span [ngClass]="profileData?.status === 1 ? 'status-active' : 'status-inactive'">
+            <span >
                 {{ profileData?.status | status }}
             </span>
         </p>

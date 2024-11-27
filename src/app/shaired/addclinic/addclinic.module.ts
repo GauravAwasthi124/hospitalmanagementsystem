@@ -1,21 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClinicComponent } from './clinic/clinic.component';
+import { AddclinicComponent } from './addclinic/addclinic.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
     path: '',
-    component:ClinicComponent
+    component:AddclinicComponent
   }
 ]
+
 @NgModule({
   declarations: [
-    ClinicComponent
+    AddclinicComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    FormsModule,
+    RouterModule.forChild(routes)
   ]
 })
-export class ClinicModule { }
+export class AddclinicModule { 
+
+}

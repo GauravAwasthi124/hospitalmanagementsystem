@@ -1,0 +1,65 @@
+<p>add clinic works!</p>
+<h2>Use of ngfor decorator</h2>
+<h2>Use of ngIf decorator</h2>
+
+<div *ngFor="let data of data">
+    <div *ngIf="data % 2 == 0">
+        {{data}}
+    </div>
+</div>
+<div [ngSwitch]="selectedColor">
+    <p *ngSwitchCase="'red'">You selected Red!</p>
+    <p *ngSwitchCase="'blue'">You selected Blue!</p>
+    <p *ngSwitchCase="'green'">You selected Green!</p>
+    <p *ngSwitchDefault>Select a color!</p>
+</div>
+
+<button (click)="changeColor('red')">Red</button>
+<button (click)="changeColor('blue')">Blue</button>
+<button (click)="changeColor('green')">Green</button>
+<button (click)="changeColor('')">Clear</button>
+
+<div [ngStyle]="{
+    'background-color': backgroundColor,
+    'color': textColor,
+    'font-size.px': fontSize
+  }">
+this is ng style
+</div>
+
+
+<!-- data binding -->
+
+<!-- 1- Interpolation -->
+{{d1}}
+<br>
+ngClass: Dynamically adds or removes CSS classes based on component data. It's used for class management. <br>
+ngStyle: Dynamically applies inline CSS styles based on component data. It's used for inline style management.
+<br><br>
+<!-- we can use the property binding 
+Property binding in Angular is used to bind data from a component to an element's property in the DOM. This allows you to dynamically control various properties of HTML elements based on the component’s state or logic. You can use property binding in many situations where you need to update the properties of elements, attributes, or directives. 
+-->
+
+<img [src]="imageurl" [alt]="'this is a image'">
+<br>
+<button [disabled]="true">Click Me</button>
+
+<!-- event binding -->
+<button (click)="onclick()">Click hear</button>
+{{clickdata}}
+
+
+<br><br>
+<!-- two way binding -->
+<div>
+    <input [(ngModel)]="name" placeholder="Enter your name" />
+    <p>Hello, {{ name }}!</p>
+</div>
+
+
+<!-- pipes in angular
+  -->
+{{dob | date:"yyyy/MM/dd"}}
+<br>
+
+{{person|json}}
